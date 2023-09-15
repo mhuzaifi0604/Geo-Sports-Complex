@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <div className="flex flex-row h-screen w-screen justify-center items-center">
       {/* Caller component for Login Sign Up Page! */}
-      <div className="flex flex-col basis-1/2 h-full w-full justify-center items-center bg-[#0d1117]">
+      <div className="flex flex-col basis-1/2 h-full w-full justify-center items-center bg-[#0d1117] overflow-auto">
               {check ? <Login /> : <SignUp />}
               <div className='flex w-4/5 backdrop-filter backdrop-blur-md rounded-md'>
           <div className='basis-1/2 text-center font-serif text-xl text-black bg-[#486730] shadow-md shadow-green-200 p-1 rounded-lg border-black border-2'>
