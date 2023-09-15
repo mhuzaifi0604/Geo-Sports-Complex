@@ -1,5 +1,6 @@
 import { useState } from "react";
 import validationSchema from "./Validation Schema";
+import axios from 'axios'
 
 const SignUp = () => {
   const [email, setemail] = useState("");
@@ -14,6 +15,13 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const data= {
+        email: email,
+        password: pass,
+        username: user,
+        cpassword: cpass,
+        vendor: vendor
+      }
       await validationSchema.validate(
         {
           email,
@@ -24,9 +32,17 @@ const SignUp = () => {
         },
         { abortEarly: false }
       );
+      try {
+        const response = axios.post('http://127.0.0.1:5000/register', {
+          data: data
+        });
+        console.log('response: ', response.data)
+      } catch (error) {
+        console.error('Error: ', error)
+      }
       console.log("Form Submitted");
       // Clear any previous errors if validation succeeded
-      //setErrors({});
+      setErrors({});
     } catch (error) {
       if (error.inner) {
         const errors = {};

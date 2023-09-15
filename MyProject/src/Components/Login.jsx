@@ -1,5 +1,6 @@
 import { useState } from "react";
 import * as Yup from 'yup';
+import axios from 'axios'
 const Login = () => {
   const [email, setemail] = useState("");
   const [pass, setpass] = useState("");
@@ -21,6 +22,15 @@ const Login = () => {
     try {
       await validationSchema.validate({ email, pass }, { abortEarly: false });
         setErrors({});
+        try {
+          const response = await axios.post('http://127.0.0.1:5000/login', {
+            email: email,
+            password: pass
+          });
+          console.log('res: ', response.data);
+        } catch (error) {
+          console.error('Error: ', error)
+        }
         
     } catch (err) {
       const validationErrors = {};
