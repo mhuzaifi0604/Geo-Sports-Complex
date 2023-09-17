@@ -26,6 +26,11 @@ const Login = () => {
           const response = await axios.post('http://127.0.0.1:5000/login', {
             email: email,
             password: pass
+          },{
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            //withCredentials: true // Include this option
           });
           console.log('res: ', response.data);
         } catch (error) {

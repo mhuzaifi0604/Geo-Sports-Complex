@@ -33,7 +33,7 @@ const SignUp = () => {
         { abortEarly: false }
       );
       try {
-        const response = axios.post('http://127.0.0.1:5000/register', {
+        const response = await axios.post('http://127.0.0.1:5000/register', {
           data: data
         });
         console.log('response: ', response.data)
@@ -41,6 +41,11 @@ const SignUp = () => {
         console.error('Error: ', error)
       }
       console.log("Form Submitted");
+      setemail("");
+      setpass("")
+      setcpass("")
+      setuser("")
+      setvendor("Select Here...")
       // Clear any previous errors if validation succeeded
       setErrors({});
     } catch (error) {
